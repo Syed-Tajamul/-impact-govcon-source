@@ -1,0 +1,54 @@
+---
+/**
+ * Impact GovCon Solutions LLC
+ * @link https://impactgovconsolutions.com
+ */
+
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import Section from "../components/Section.astro";
+import SectionTitle from "../components/SectionTitle.astro";
+import IndustryCard from "../components/IndustryCard.astro";
+import Button from "../components/Button.astro";
+import { industries } from "../data/industries";
+---
+
+<Layout title="Industries We Cover | Impact GovCon Solutions LLC">
+	<Hero
+		eyebrow="Target Public-Sector Markets"
+		title="Markets We Support"
+		description="Our expertise spans a diverse range of public and commercial sectors, enabling us to tailor capture strategies and technical solutions to your specific domain."
+		primaryButtonText="Discuss Your Sector"
+		primaryButtonHref="/contact"
+		compact={true}
+	/>
+
+	<Section backgroundColor="white">
+		<div class="flex flex-col gap-10 w-full">
+			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 w-full animate-on-scroll">
+				{industries.map((industry) => (
+					<IndustryCard title={industry.title} description={industry.description} />
+				))}
+			</div>
+		</div>
+	</Section>
+
+	<Section backgroundColor="cardGrey">
+		<div class="flex flex-col md:flex-row gap-10 w-full">
+			<div class="flex-1 flex flex-col gap-4 animate-on-scroll">
+				<SectionTitle eyebrow="Strategic Focus" text="Aligning Capabilities " focusText="with Opportunity" />
+			</div>
+			<div class="flex-1 flex flex-col gap-6 animate-on-scroll-right">
+				<p class="text-15 md:text-16 text-bodyGrey font-body leading-relaxed">
+					Federal procurement is highly specialized. Our approach involves deep analysis of agency buying trends, legislative mandates, and emerging technology requirements to position your firm for success. We help you identify and pursue opportunities where your core strengths provide maximum competitive advantage.
+				</p>
+				<p class="text-15 md:text-16 text-bodyGrey font-body leading-relaxed">
+					Beyond identifying opportunities, we assist with tailoring your capture strategy and technical submittals to specific agency needs. This includes detailed market research, competitor analysis, and crafting compelling narratives that resonate with federal evaluators. Our goal is to ensure your offerings are perfectly matched to the market demand.
+				</p>
+				<div>
+					<Button text="Discuss Your Sector" href="/contact" variant="filled" arrow={true} />
+				</div>
+			</div>
+		</div>
+	</Section>
+</Layout>

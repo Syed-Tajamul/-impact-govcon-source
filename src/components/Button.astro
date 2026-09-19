@@ -1,0 +1,95 @@
+---
+/**
+ * Impact GovCon Solutions LLC
+ * @link https://impactgovconsolutions.com
+ */
+
+export interface Props {
+	text: string;
+	variant?: "filled" | "outline" | "outlineLight";
+	href?: string;
+	paddings?: string;
+	pulseEffect?: boolean;
+	arrow?: boolean;
+	ariaLabel?: string;
+}
+
+const {
+	text,
+	variant = "filled",
+	href,
+	pulseEffect = false,
+	paddings = "px-6 lg:px-8 py-3 lg:py-3.5",
+	arrow = false,
+	ariaLabel,
+} = Astro.props;
+
+const baseClasses = `flex justify-center gap-2 items-center rounded-md text-14 md:text-16 font-main font-bold max-w-max ${paddings}`;
+
+const variantClasses =
+	variant === "outline"
+		? "bg-white text-navy border-navy border-2"
+		: variant === "outlineLight"
+			? "bg-transparent text-white border-white border-2"
+			: "bg-red text-white";
+
+const pulseClasses = variant === "filled" && pulseEffect ? "pulse-effect" : "";
+
+const Tag = href ? "a" : "button";
+---
+
+<Tag
+	href={href}
+	class={`${baseClasses} ${variantClasses} ${pulseClasses} hover-effect`}
+	aria-label={ariaLabel || text}
+>
+	<span class="min-w-max">{text}</span>
+	{
+		arrow && (
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				fill="none"
+				viewBox="0 0 24 24"
+				stroke-width="2"
+				stroke="currentColor"
+				class="w-4 h-4 md:w-5 md:h-5 ml-1"
+			>
+				<path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					d="M17.25 6.75L22.5 12l-5.25 5.25M2.25 12h19.5"
+				/>
+			</svg>
+		)
+	}
+</Tag>
+
+<style>
+	@keyframes pulse {
+		0% {
+			box-shadow: 0 0 0 0 #d6282850;
+		}
+		70% {
+			box-shadow: 0 0 0 10px #d6282800;
+		}
+		100% {
+			box-shadow: 0 0 0 0 #d6282800;
+		}
+	}
+
+	.pulse-effect {
+		animation: pulse 2s infinite;
+	}
+
+	.hover-effect {
+		transition:
+			background-color 0.3s ease,
+			transform 0.3s ease,
+			box-shadow 0.3s ease;
+	}
+
+	.hover-effect:hover {
+		transform: translateY(-3px);
+		box-shadow: 0 15px 30px -10px rgba(214, 40, 40, 0.45);
+	}
+</style>

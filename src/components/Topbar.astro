@@ -1,0 +1,123 @@
+---
+/**
+ * Impact GovCon Solutions LLC
+ * @link https://impactgovconsolutions.com
+ */
+
+import Button from "./Button.astro";
+import { activeTabColor } from "../utils/helpers";
+import { AppRoutes } from "../utils/routes";
+
+const pathname = new URL(Astro.request.url).pathname;
+const activeRoute = pathname.endsWith("/") && pathname !== "/" ? pathname.slice(0, -1) : pathname;
+const normalizedRoute = activeRoute === "/" ? "" : activeRoute;
+
+const navLinks = [
+	{ label: "Home", href: "/", route: AppRoutes.Home },
+	{ label: "About Us", href: "/about", route: AppRoutes.About },
+	{ label: "Our Services", href: "/services", route: AppRoutes.Services },
+	{ label: "Industries We Cover", href: "/industries", route: AppRoutes.Industries },
+	{ label: "Case Studies", href: "/case-studies", route: AppRoutes.CaseStudies },
+	{ label: "Contact Us", href: "/contact", route: AppRoutes.ContactUs },
+	{ label: "Privacy Policy", href: "/privacy-policy", route: AppRoutes.PrivacyPolicy },
+];
+---
+
+<div
+	class="flex flex-col w-full"
+	x-data="{ openMenu: false }"
+	x-init="$watch('openMenu', value => document.body?.classList.toggle('overflow-hidden', value))"
+>
+	<div
+		class="w-full bg-lightGrey/90 backdrop-blur-lg shadow-topbar flex items-center justify-center"
+	>
+		<div class="max-w-[1440px] w-full px-5 md:px-10 lg:px-14">
+			<header class="w-full flex justify-between items-center py-3 font-main flex-grow">
+				<a class="flex items-center" href="/">
+					<img class="h-9 md:h-10 cursor-pointer" src="/logo.png" alt="Impact GovCon Solutions LLC" />
+				</a>
+				<div class="lg:flex items-center justify-between hidden gap-6 xl:gap-8">
+					<div class="flex items-center justify-between gap-5 xl:gap-7">
+						{
+							navLinks.map((link) => (
+								<a
+									href={link.href}
+									class={`group relative ${activeTabColor(normalizedRoute, link.route)} text-14 xl:text-15 font-semibold cursor-pointer text-nowrap font-main`}
+								>
+									<span class="group-hover:text-red transition-colors duration-300">
+										{link.label}
+									</span>
+									<span
+										class={`absolute -bottom-1 left-0 h-0.5 bg-red transition-all duration-300 group-hover:w-full ${normalizedRoute === link.route ? "w-full" : "w-0"}`}
+									/>
+								</a>
+							))
+						}
+					</div>
+					<a
+						href="https://www.linkedin.com/company/impact-govcon-solutions"
+						target="_blank"
+						aria-label="LinkedIn"
+						class="text-navy hover:text-red transition-colors duration-300"
+					>
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 14 14" fill="none">
+							<path d="M13.5221 13.3011V13.3006H13.5253V8.53281C13.5253 6.20039 13.0232 4.40369 10.2965 4.40369C8.98562 4.40369 8.10595 5.12302 7.74683 5.80498H7.70891V4.62144H5.12354V13.3006H7.81562V9.00298C7.81562 7.87144 8.03012 6.77727 9.43141 6.77727C10.8121 6.77727 10.8327 8.0686 10.8327 9.07556V13.3011H13.5221Z" fill="currentColor"/>
+							<path d="M0.740234 4.62183H3.43557V13.301H0.740234V4.62183Z" fill="currentColor"/>
+							<path d="M2.08647 0.300781C1.22468 0.300781 0.525391 1.00007 0.525391 1.86186C0.525391 2.72366 1.22468 3.43757 2.08647 3.43757C2.94827 3.43757 3.64756 2.72366 3.64756 1.86186C3.64702 1.00007 2.94772 0.300781 2.08647 0.300781V0.300781Z" fill="currentColor"/>
+						</svg>
+					</a>
+					<a href="/contact">
+						<Button text="Let's Schedule a Strategy Meeting" variant="filled" paddings="px-5 py-2.5" />
+					</a>
+				</div>
+				<div class="flex items-center justify-center lg:hidden">
+					<button @click="openMenu = !openMenu" :aria-expanded="openMenu" aria-controls="mobile-menu" aria-label="Toggle Menu">
+						<svg width="30" height="30" viewBox="0 0 39 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M4.83301 19.1602H33.333M4.83301 9.66016H33.333M14.333 28.6602H33.333" stroke="#0B1F3A" stroke-width="3.16667" stroke-linecap="round" stroke-linejoin="round"/>
+						</svg>
+					</button>
+				</div>
+			</header>
+		</div>
+	</div>
+	<nav
+		id="mobile-menu"
+		class="fixed top-0 right-0 bottom-0 left-0 backdrop-blur-sm z-10"
+		:class="openMenu ? 'visible' : 'invisible'"
+		x-cloak
+	>
+		<div
+			class="absolute top-0 right-0 bottom-0 w-full drop-shadow-2xl z-10 transition-all px-6 md:px-11 bg-white overflow-scroll"
+			:class="openMenu ? 'translate-x-0' : 'translate-x-full'"
+		>
+			<div class="flex justify-between items-center border-b border-borderGrey text-16 font-medium py-4">
+				<img class="h-8 cursor-pointer" src="/logo.png" alt="Impact GovCon Solutions LLC" />
+				<button class="text-red" @click="openMenu = !openMenu" aria-label="Close menu">
+					<svg width="26" height="26" viewBox="0 0 38 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M28.5 10L9.5 29M9.5 10L28.5 29" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+					</svg>
+				</button>
+			</div>
+			<ul class="flex flex-col gap-7 py-8 text-16 font-medium">
+				{
+					navLinks.map((link) => (
+						<li>
+							<a href={link.href} class={`font-main ${activeTabColor(normalizedRoute, link.route)}`}>
+								{link.label}
+							</a>
+						</li>
+					))
+				}
+				<a href="/contact">
+					<Button text="Schedule a Strategy Meeting" variant="filled" paddings="px-6 py-3" />
+				</a>
+			</ul>
+		</div>
+	</nav>
+</div>
+
+<style>
+	[x-cloak] {
+		display: none !important;
+	}
+</style>

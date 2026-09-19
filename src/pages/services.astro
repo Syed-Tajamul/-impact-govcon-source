@@ -1,0 +1,101 @@
+---
+/**
+ * Impact GovCon Solutions LLC
+ * @link https://impactgovconsolutions.com
+ */
+
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import Section from "../components/Section.astro";
+import SectionTitle from "../components/SectionTitle.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+import CtaBanner from "../components/CtaBanner.astro";
+import { services } from "../data/services";
+---
+
+<Layout title="Our Services | Impact GovCon Solutions LLC">
+	<Hero
+		eyebrow="Integrated Solutions"
+		title="Federal Capture Strategy & Technical Execution"
+		description="Unifying rigorous compliance, strategic capture management, and hands-on IT engineering for public sector success."
+		primaryButtonText="Discuss Your Requirements"
+		primaryButtonHref="/contact"
+		secondaryButtonText="Explore Our Approach"
+		secondaryButtonHref="#approach"
+		compact={true}
+	/>
+
+	<Section backgroundColor="white" id="approach">
+		<div class="flex flex-col gap-10 w-full">
+			<SectionTitle
+				eyebrow="Core Advisory"
+				text="Government Contracting "
+				focusText="Services"
+				align="left"
+			/>
+			<p
+				class="text-16 text-bodyGrey font-body max-w-2xl -mt-4 animate-on-scroll"
+			>
+				Navigate the federal marketplace with expert guidance across the
+				entire capture lifecycle, from opportunity identification to
+				contract financing readiness.
+			</p>
+			<div
+				class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full animate-on-scroll"
+			>
+				{
+					services.map((service) => (
+						<ServiceCard
+							title={service.title}
+							description={service.description}
+							icon={service.icon}
+						/>
+					))
+				}
+			</div>
+		</div>
+	</Section>
+
+	<Section backgroundColor="cardGrey">
+		<div class="flex flex-col md:flex-row gap-10 w-full">
+			<div class="flex-1 flex flex-col gap-4 animate-on-scroll">
+				<SectionTitle
+					eyebrow="Strategic Focus"
+					text="Aligning Capabilities "
+					focusText="with Opportunity"
+				/>
+			</div>
+			<div class="flex-1 flex flex-col gap-6 animate-on-scroll-right">
+				<p
+					class="text-15 md:text-16 text-bodyGrey font-body leading-relaxed"
+				>
+					Federal procurement is highly specialized. Our approach
+					involves deep analysis of agency buying trends, legislative
+					mandates, and emerging technology requirements to position
+					your firm for success. We help you identify and pursue
+					opportunities where your core strengths provide maximum
+					competitive advantage.
+				</p>
+				<p
+					class="text-15 md:text-16 text-bodyGrey font-body leading-relaxed"
+				>
+					Beyond identifying opportunities, we assist with tailoring
+					your capture strategy and technical submittals to specific
+					agency needs. This includes detailed market research,
+					competitor analysis, and crafting compelling narratives that
+					resonate with federal evaluators. Our goal is to ensure your
+					offerings are perfectly matched to the market demand.
+				</p>
+			</div>
+		</div>
+	</Section>
+
+	<CtaBanner
+		id="services-cta-network"
+		heading="Let's build your"
+		highlight="capture strategy"
+		description="Talk to our team about your solicitation timeline, teaming needs, and compliance requirements."
+		buttonText="Let's Schedule a Strategy Meeting"
+		buttonHref="/contact"
+	/>
+</Layout>

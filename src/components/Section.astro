@@ -1,0 +1,48 @@
+---
+/**
+ * Impact GovCon Solutions LLC
+ * @link https://impactgovconsolutions.com
+ */
+
+interface Props {
+	backgroundColor?: "white" | "cardGrey" | "navy";
+	hideOverflow?: boolean;
+	isFullWidth?: boolean;
+	paddingY?: string;
+	id?: string;
+}
+
+const {
+	backgroundColor = "white",
+	hideOverflow = true,
+	isFullWidth = false,
+	paddingY = "py-16 lg:py-24",
+	id,
+} = Astro.props;
+
+const getBackgroundColor = (color: string) => {
+	switch (color) {
+		case "white":
+			return "bg-white";
+		case "cardGrey":
+			return "bg-cardGrey";
+		case "navy":
+			return "bg-navy";
+		default:
+			return "bg-white";
+	}
+};
+---
+
+<div
+	id={id}
+	class={`${getBackgroundColor(backgroundColor)} w-full flex items-center justify-center`}
+>
+	<div
+		class={`relative w-full ${isFullWidth ? "max-w-none" : "max-w-[1280px]"} ${paddingY} px-5 md:px-12 lg:px-16 ${hideOverflow ? "overflow-hidden" : "overflow-visible"}`}
+	>
+		<div class="flex w-full justify-center items-center flex-col">
+			<slot />
+		</div>
+	</div>
+</div>

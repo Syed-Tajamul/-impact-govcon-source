@@ -1,0 +1,153 @@
+---
+/**
+ * Impact GovCon Solutions LLC
+ * @link https://impactgovconsolutions.com
+ */
+
+import Footer from "../components/Footer.astro";
+import Topbar from "../components/Topbar.astro";
+import { ViewTransitions } from "astro:transitions";
+
+interface Props {
+	title: string;
+	description?: string;
+	showTopbar?: boolean;
+}
+
+const {
+	title,
+	description = "Impact GovCon Solutions LLC helps businesses pursue, compete, and grow in the U.S. government contracting market through federal capture strategy, proposal compliance, and technical execution.",
+	showTopbar = true,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta content={description} name="description" />
+		<meta content={title} property="og:title" />
+		<meta content={description} property="og:description" />
+		<meta content={title} property="twitter:title" />
+		<meta content={description} property="twitter:description" />
+		<meta property="og:type" content="website" />
+		<meta content="summary_large_image" name="twitter:card" />
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
+		<link rel="icon" type="image/png" href="/logo.png" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap"
+			rel="stylesheet"
+		/>
+		<ViewTransitions />
+		<script>
+			import "../scripts/script.ts";
+		</script>
+	</head>
+	<body>
+		<div
+			class="w-full flex flex-col justify-center items-center"
+			x-data="initializeScript()"
+		>
+			{
+				showTopbar && (
+					<div class="fixed top-0 w-full z-50 transition-all duration-300">
+						<Topbar />
+					</div>
+				)
+			}
+			<div
+				class="w-full mt-[72px] md:mt-[84px] flex flex-col justify-center items-center"
+			>
+				<slot />
+			</div>
+			<div class="w-full"><Footer /></div>
+			<div class="fixed bottom-6 right-6 z-50 md:hidden">
+				<a
+					href="/contact"
+					class="bg-red text-white font-bold py-3 px-5 rounded-full shadow-lg hover:bg-redDark transition duration-300 flex items-center gap-2 text-14"
+				>
+					<span>Schedule a Meeting</span>
+				</a>
+			</div>
+		</div>
+	</body>
+	<style is:global>
+		html {
+			font-family: "Inter", system-ui, sans-serif;
+			scroll-behavior: smooth;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+		}
+		[x-cloak] {
+			display: none !important;
+		}
+		@keyframes moveUp {
+			0% {
+				transform: translateY(50px);
+				opacity: 0;
+			}
+			100% {
+				transform: translateY(0);
+				opacity: 1;
+			}
+		}
+
+		.animate-move-up {
+			animation: moveUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+			opacity: 0;
+			animation-delay: 0.1s;
+		}
+
+		@keyframes moveRight {
+			0% {
+				transform: translateX(-50px);
+				opacity: 0;
+			}
+			100% {
+				transform: translateX(0);
+				opacity: 1;
+			}
+		}
+
+		.animate-move-right {
+			animation: moveRight 0.9s ease-in-out forwards;
+		}
+	</style>
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			const observerOptions = {
+				root: null,
+				rootMargin: "0px",
+				threshold: 0.1,
+			};
+
+			const observer = new IntersectionObserver((entries, observer) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						if (entry.target.classList.contains("animate-on-scroll")) {
+							entry.target.classList.add("animate-move-up");
+						} else if (
+							entry.target.classList.contains("animate-on-scroll-right")
+						) {
+							entry.target.classList.add("animate-move-right");
+						}
+						observer.unobserve(entry.target);
+					}
+				});
+			}, observerOptions);
+
+			const animateOnScrollElements =
+				document.querySelectorAll<HTMLElement>(".animate-on-scroll");
+			const animateRightElements = document.querySelectorAll<HTMLElement>(
+				".animate-on-scroll-right",
+			);
+
+			animateOnScrollElements.forEach((el) => observer.observe(el));
+			animateRightElements.forEach((el) => observer.observe(el));
+		});
+	</script>
+</html>

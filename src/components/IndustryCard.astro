@@ -1,0 +1,24 @@
+---
+/**
+ * Impact GovCon Solutions LLC
+ * @link https://impactgovconsolutions.com
+ */
+
+interface Props {
+	title: string;
+	description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<div
+	class="group flex flex-col gap-3 bg-cardGrey border border-borderGrey rounded-xl p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-cardHover hover:border-red/30"
+>
+	<h3 class="text-18 md:text-20 font-bold font-title text-navy group-hover:text-red transition-colors duration-300">
+		{title}
+	</h3>
+	<p class="text-14 text-bodyGrey font-body leading-relaxed">
+		{description}
+	</p>
+</div>

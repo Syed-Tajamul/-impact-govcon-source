@@ -1,0 +1,78 @@
+---
+/**
+ * Impact GovCon Solutions LLC
+ * @link https://impactgovconsolutions.com
+ */
+
+import Button from "./Button.astro";
+
+interface Props {
+	eyebrow: string;
+	title: string;
+	description: string;
+	primaryButtonText: string;
+	primaryButtonHref?: string;
+	secondaryButtonText?: string;
+	secondaryButtonHref?: string;
+	compact?: boolean;
+	image?: string;
+	imageAlt?: string;
+}
+
+const {
+	eyebrow,
+	title,
+	description,
+	primaryButtonText,
+	primaryButtonHref = "/contact",
+	secondaryButtonText,
+	secondaryButtonHref,
+	compact = false,
+	image,
+	imageAlt = "",
+} = Astro.props;
+---
+
+<div class="w-full bg-navy flex items-center justify-center relative overflow-hidden">
+	<div
+		class={`max-w-[1280px] w-full px-5 md:px-12 lg:px-16 ${compact ? "py-16 lg:py-20" : "py-20 lg:py-24"} flex ${image ? "flex-col lg:flex-row lg:items-center gap-10 lg:gap-14" : "flex-col"} ${compact ? "items-center text-center" : "items-start text-left"} relative z-10`}
+	>
+		<div class={`flex flex-col gap-6 lg:gap-8 ${image ? "flex-1" : "w-full"} ${compact ? "items-center text-center" : "items-start text-left"}`}>
+			<span class="text-14 md:text-16 font-semibold text-red font-main animate-on-scroll">
+				{eyebrow}
+			</span>
+			<h1
+				class={`text-32 md:text-48 lg:text-60 font-bold font-title text-white leading-tight animate-on-scroll ${compact ? "max-w-3xl" : "max-w-2xl"}`}
+			>
+				{title}
+			</h1>
+			<p
+				class={`text-16 md:text-18 text-white/75 font-body leading-relaxed animate-on-scroll ${compact ? "max-w-2xl" : "max-w-xl"}`}
+			>
+				{description}
+			</p>
+			<div class="flex flex-wrap gap-4 animate-on-scroll">
+				<Button text={primaryButtonText} href={primaryButtonHref} variant="filled" pulseEffect={true} />
+				{
+					secondaryButtonText && (
+						<Button text={secondaryButtonText} href={secondaryButtonHref} variant="outlineLight" />
+					)
+				}
+			</div>
+		</div>
+		{
+			image && (
+				<div class="flex-1 w-full max-w-xl lg:max-w-none animate-on-scroll-right">
+					<div class="relative">
+						<div class="absolute -inset-3 rounded-2xl border border-red/30" />
+						<img
+							src={image}
+							alt={imageAlt}
+							class="relative w-full h-[260px] md:h-[340px] lg:h-[400px] object-cover rounded-2xl shadow-cardHover"
+						/>
+					</div>
+				</div>
+			)
+		}
+	</div>
+</div>

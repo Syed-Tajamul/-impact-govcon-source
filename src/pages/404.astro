@@ -1,0 +1,22 @@
+---
+/**
+ * Impact GovCon Solutions LLC
+ * @link https://impactgovconsolutions.com
+ */
+
+import Layout from "../layouts/Layout.astro";
+import Button from "../components/Button.astro";
+---
+
+<Layout title="Page Not Found | Impact GovCon Solutions LLC">
+	<div class="w-full bg-white flex items-center justify-center py-24">
+		<div class="flex flex-col items-center text-center gap-6">
+			<span class="text-14 font-semibold uppercase tracking-wider text-red font-main">404</span>
+			<h1 class="text-32 md:text-48 font-bold font-title text-navy">Page Not Found</h1>
+			<p class="text-16 text-bodyGrey font-body max-w-md">
+				The page you're looking for doesn't exist or has moved.
+			</p>
+			<Button text="Back to Home" href="/" variant="filled" />
+		</div>
+	</div>
+</Layout>

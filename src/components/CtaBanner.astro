@@ -1,0 +1,63 @@
+---
+/**
+ * Impact GovCon Solutions LLC
+ * @link https://impactgovconsolutions.com
+ */
+
+import Button from "./Button.astro";
+import NetworkBackground from "./NetworkBackground.astro";
+
+interface Props {
+    id: string;
+    heading: string;
+    highlight?: string;
+    headingSuffix?: string;
+    description?: string;
+    buttonText: string;
+    buttonHref?: string;
+}
+
+const {
+    id,
+    heading,
+    highlight,
+    headingSuffix = "",
+    description,
+    buttonText,
+    buttonHref = "/contact",
+} = Astro.props;
+---
+
+<div class="w-full bg-white flex items-center justify-center">
+    <div class="max-w-[1280px] w-full px-5 md:px-12 lg:px-16 py-12 md:py-16">
+        <div
+            class="relative w-full rounded-3xl overflow-hidden bg-navy shadow-cardHover animate-on-scroll"
+        >
+            <NetworkBackground id={id} />
+            <div
+                class="relative z-10 flex flex-col items-center text-center gap-5 md:gap-6 max-w-2xl mx-auto px-6 py-14 md:py-20"
+            >
+                <h2
+                    class="text-26 md:text-40 font-bold font-title text-white leading-tight"
+                >
+                    {heading}
+                    {highlight && <span class="text-red">{highlight}</span>}
+                    {headingSuffix}
+                </h2>
+                {
+                    description && (
+                        <p class="text-15 md:text-16 text-white/75 font-body">
+                            {description}
+                        </p>
+                    )
+                }
+                <Button
+                    text={buttonText}
+                    href={buttonHref}
+                    variant="filled"
+                    pulseEffect={true}
+                />
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+---
+/**
+ * Impact GovCon Solutions LLC
+ * @link https://impactgovconsolutions.com
+ */
+
+interface Props {
+	name: string;
+	role: string;
+	bio: string;
+	img: string;
+	reverse?: boolean;
+}
+
+const { name, role, bio, img, reverse = false } = Astro.props;
+---
+
+<div
+	class={`flex flex-col ${reverse ? "md:flex-row-reverse" : "md:flex-row"} items-center gap-10 md:gap-14 w-full`}
+>
+	<div class="w-full md:w-[280px] flex-shrink-0 animate-on-scroll">
+		<img
+			src={img}
+			alt={name}
+			class="w-full max-w-[280px] mx-auto rounded-2xl object-cover shadow-cardHover"
+		/>
+	</div>
+	<div class="flex flex-col gap-3 animate-on-scroll-right">
+		<div class="w-10 h-1 bg-red rounded"></div>
+		<span class="text-14 font-semibold uppercase tracking-wider text-red font-main">
+			{role}
+		</span>
+		<h3 class="text-28 md:text-32 font-bold font-title text-navy">
+			{name}
+		</h3>
+		<p class="text-15 md:text-16 text-bodyGrey font-body leading-relaxed max-w-xl">
+			{bio}
+		</p>
+	</div>
+</div>

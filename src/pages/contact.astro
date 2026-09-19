@@ -1,0 +1,97 @@
+---
+/**
+ * Impact GovCon Solutions LLC
+ * @link https://impactgovconsolutions.com
+ */
+
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import Section from "../components/Section.astro";
+import SectionTitle from "../components/SectionTitle.astro";
+---
+
+<Layout title="Contact Us | Impact GovCon Solutions LLC">
+	<Hero
+		eyebrow="Let's Talk"
+		title="Schedule a Strategy Meeting"
+		description="Tell us about your solicitation timeline, teaming needs, and technical requirements. We'll follow up to discuss how we can support your capture strategy."
+		primaryButtonText="Email Us Directly"
+		primaryButtonHref="mailto:info@impactgovconsolutions.com"
+		compact={true}
+	/>
+
+	<Section backgroundColor="white">
+		<div class="flex flex-col md:flex-row gap-14 w-full">
+			<div class="flex-1 flex flex-col gap-8 animate-on-scroll">
+				<SectionTitle eyebrow="Get in Touch" text="Contact " focusText="Information" />
+				<div class="flex flex-col gap-6 text-15 text-bodyGrey font-body">
+					<div class="flex flex-col gap-1">
+						<span class="text-12 font-bold uppercase tracking-wider text-navy">Location</span>
+						<span>4645 Market Ave N, Suite 500,</span>
+						<span>Canton, OH 44721, USA</span>
+					</div>
+					<div class="flex flex-col gap-1">
+						<span class="text-12 font-bold uppercase tracking-wider text-navy">General Inquiries</span>
+						<a href="mailto:info@impactgovconsolutions.com" class="text-red underline w-max">
+							info@impactgovconsolutions.com
+						</a>
+					</div>
+					<div class="flex flex-col gap-1">
+						<span class="text-12 font-bold uppercase tracking-wider text-navy">Sales &amp; Partnerships</span>
+						<a href="mailto:sales@impactgovconsolutions.com" class="text-red underline w-max">
+							sales@impactgovconsolutions.com
+						</a>
+					</div>
+					<div class="flex flex-col gap-1">
+						<span class="text-12 font-bold uppercase tracking-wider text-navy">Confidentiality</span>
+						<span>All solicitation and technical inquiries are treated as confidential.</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="flex-1 w-full animate-on-scroll-right">
+				<div
+					x-show="!submitted"
+					class="flex flex-col gap-4 bg-cardGrey border border-borderGrey rounded-xl p-7 md:p-8"
+				>
+					<div class="flex flex-col gap-1.5">
+						<label class="text-13 font-semibold text-navy" for="name">Full Name</label>
+						<input id="name" x-model="name" type="text" class="rounded-md border border-borderGrey px-4 py-2.5 text-14 focus:outline-none focus:border-red" placeholder="Jane Doe" />
+					</div>
+					<div class="flex flex-col gap-1.5">
+						<label class="text-13 font-semibold text-navy" for="email">Email</label>
+						<input id="email" x-model="email" type="email" class="rounded-md border border-borderGrey px-4 py-2.5 text-14 focus:outline-none focus:border-red" placeholder="jane@company.com" />
+					</div>
+					<div class="flex flex-col gap-1.5">
+						<label class="text-13 font-semibold text-navy" for="phone">Phone</label>
+						<input id="phone" x-model="phone" type="tel" class="rounded-md border border-borderGrey px-4 py-2.5 text-14 focus:outline-none focus:border-red" placeholder="(555) 555-5555" />
+					</div>
+					<div class="flex flex-col gap-1.5">
+						<label class="text-13 font-semibold text-navy" for="company">Company</label>
+						<input id="company" x-model="company" type="text" class="rounded-md border border-borderGrey px-4 py-2.5 text-14 focus:outline-none focus:border-red" placeholder="Company name" />
+					</div>
+					<div class="flex flex-col gap-1.5">
+						<label class="text-13 font-semibold text-navy" for="message">Message</label>
+						<textarea id="message" x-model="message" rows="4" class="rounded-md border border-borderGrey px-4 py-2.5 text-14 focus:outline-none focus:border-red" placeholder="Tell us about your requirements"></textarea>
+					</div>
+					<button
+						type="button"
+						@click="submitContact()"
+						class="mt-2 bg-red text-white font-bold text-14 rounded-md py-3 hover:bg-redDark transition-colors duration-300"
+					>
+						Send Message
+					</button>
+					<template x-if="errors && Object.keys(errors).length">
+						<p class="text-13 text-red">Please fill in your name, a valid email, phone, and message.</p>
+					</template>
+				</div>
+				<div x-show="submitted" x-cloak class="flex flex-col items-center text-center gap-3 bg-cardGrey border border-borderGrey rounded-xl p-10">
+					<h3 class="text-20 font-bold font-title text-navy">Thank you</h3>
+					<p class="text-14 text-bodyGrey font-body">
+						We've received your message and will be in touch shortly to schedule your strategy meeting.
+					</p>
+				</div>
+			</div>
+		</div>
+	</Section>
+</Layout>

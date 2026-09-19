@@ -1,0 +1,50 @@
+---
+/**
+ * Impact GovCon Solutions LLC
+ * @link https://impactgovconsolutions.com
+ */
+
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import Section from "../components/Section.astro";
+import SectionTitle from "../components/SectionTitle.astro";
+import TeamCard from "../components/TeamCard.astro";
+import { teamMembers } from "../data/team";
+---
+
+<Layout title="About Us | Impact GovCon Solutions LLC">
+	<Hero
+		eyebrow="Who We Are"
+		title="People, Solutions, Impact"
+		description="Impact GovCon Solutions LLC helps businesses pursue, compete, and grow in the U.S. government contracting market through federal capture strategy, proposal compliance, and technical execution."
+		primaryButtonText="Discuss Your Requirements"
+		primaryButtonHref="/contact"
+		compact={true}
+	/>
+
+	<Section backgroundColor="white">
+		<div class="flex flex-col gap-10 w-full">
+			<SectionTitle eyebrow="Our Leadership" text="Meet the " focusText="Founders" align="center" />
+			<div class="flex flex-col gap-16 w-full mt-4">
+				{teamMembers.map((member, i) => (
+					<TeamCard
+						name={member.name}
+						role={member.role}
+						bio={member.bio}
+						img={member.img}
+						reverse={i % 2 === 1}
+					/>
+				))}
+			</div>
+		</div>
+	</Section>
+
+	<Section backgroundColor="cardGrey">
+		<div class="flex flex-col gap-6 items-center text-center max-w-2xl mx-auto animate-on-scroll">
+			<SectionTitle text="Our " focusText="Mission" align="center" />
+			<p class="text-16 text-bodyGrey font-body leading-relaxed">
+				Federal procurement is highly specialized. Our approach involves deep analysis of agency buying trends, legislative mandates, and emerging technology requirements to position your firm for success. We help you identify and pursue opportunities where your core strengths provide maximum competitive advantage &mdash; aligning capabilities with opportunity through market research, competitor analysis, and compelling narratives that resonate with federal evaluators.
+			</p>
+		</div>
+	</Section>
+</Layout>

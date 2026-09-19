@@ -1,0 +1,127 @@
+---
+/**
+ * Impact GovCon Solutions LLC
+ * @link https://impactgovconsolutions.com
+ */
+
+const year = new Date().getFullYear();
+
+const quickLinks = [
+	{ label: "Home", href: "/" },
+	{ label: "About Us", href: "/about" },
+	{ label: "Our Services", href: "/services" },
+	{ label: "Industries We Cover", href: "/industries" },
+	{ label: "Case Studies", href: "/case-studies" },
+	{ label: "Contact Us", href: "/contact" },
+];
+---
+
+<div class="w-full bg-navy flex items-center justify-center">
+	<div
+		class="max-w-[1280px] w-full px-5 md:px-12 lg:px-16 pt-16 pb-6 flex flex-col gap-12 font-main"
+	>
+		<div class="flex flex-col md:flex-row justify-between gap-10 md:gap-8">
+			<div class="flex flex-col gap-3 md:max-w-[320px]">
+				<div
+					class="text-22 md:text-24 font-bold font-title text-white leading-tight"
+				>
+					Impact GovCon Solutions LLC
+				</div>
+				<p class="text-14 text-white/60 font-body leading-6">
+					Federal capture strategy, proposal compliance, and technical
+					execution from Canton, Ohio.
+				</p>
+			</div>
+			<div class="flex flex-col gap-4">
+				<div
+					class="text-12 font-bold uppercase tracking-wider text-white/50 font-main"
+				>
+					Navigation
+				</div>
+				<div
+					class="flex flex-col gap-3 text-14 text-white/80 font-body"
+				>
+					{
+						quickLinks.map((link) => (
+							<a
+								href={link.href}
+								class="hover:text-red transition-colors duration-300 w-max"
+							>
+								{link.label}
+							</a>
+						))
+					}
+				</div>
+			</div>
+			<div class="flex flex-col gap-4">
+				<div
+					class="text-12 font-bold uppercase tracking-wider text-white/50 font-main"
+				>
+					Contact Us
+				</div>
+				<div
+					class="flex flex-col gap-3 text-14 text-white/80 font-body max-w-[260px]"
+				>
+					<div>
+						<span class="text-white font-semibold"
+							>Impact GovCon Solutions LLC</span
+						>
+					</div>
+					<div>
+						<div
+							class="text-white/50 text-12 uppercase tracking-wide mb-1"
+						>
+							Location:
+						</div>
+						<div>4645 Market Ave N, Suite 500,</div>
+						<div>Canton, OH 44721, USA</div>
+					</div>
+					<div
+						class="text-white/50 text-12 uppercase tracking-wide mt-1"
+					>
+						Confidential solicitation &amp; technical inquiries:
+					</div>
+					<div class="flex flex-col">
+						<span
+							class="text-white/50 text-12 uppercase tracking-wide mb-1"
+							>E-mail:</span
+						>
+						<a
+							href="mailto:info@impactgovconsolutions.com"
+							class="underline hover:text-red transition-colors duration-300 w-max"
+						>
+							info@impactgovconsolutions.com
+						</a>
+						<a
+							href="mailto:sales@impactgovconsolutions.com"
+							class="underline hover:text-red transition-colors duration-300 w-max"
+						>
+							sales@impactgovconsolutions.com
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="w-full h-px bg-white/10"></div>
+		<div
+			class="flex flex-col md:flex-row items-center justify-between gap-4 text-12 text-white/50 font-body"
+		>
+			<div>
+				&copy; {year} Impact GovCon Solutions. Impact GovCon Solutions LLC.
+				All rights reserved.
+			</div>
+			<div class="flex items-center gap-6">
+				<a
+					href="/privacy-policy"
+					class="hover:text-red transition-colors duration-300"
+					>Privacy Policy</a
+				>
+				<a
+					href="/terms-conditions"
+					class="hover:text-red transition-colors duration-300"
+					>Terms &amp; Conditions</a
+				>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,84 @@
+---
+/**
+ * Impact GovCon Solutions LLC
+ * @link https://impactgovconsolutions.com
+ */
+
+import { caseStudies } from "../data/caseStudies";
+
+const total = caseStudies.length;
+---
+
+<div x-data="{ activeIndex: 0 }" x-cloak class="flex w-full flex-col">
+	<div class="relative min-h-[420px] md:min-h-[320px] shadow-cardHover overflow-hidden rounded-2xl bg-white border border-borderGrey">
+		{
+			caseStudies.map((item, index) => (
+				<div
+					x-show={`activeIndex === ${index}`}
+					x-transition:enter="transition ease-out duration-500"
+					x-transition:enter-start="opacity-0 translate-x-6"
+					x-transition:enter-end="opacity-100 translate-x-0"
+					class="absolute inset-0 flex flex-col md:flex-row"
+				>
+					<div class="md:w-2/5 h-48 md:h-full flex-shrink-0">
+						{item.img ? (
+							<img src={item.img} alt={item.title} class="w-full h-full object-cover" />
+						) : (
+							<div class="w-full h-full bg-gradient-to-br from-navy to-navyLight" />
+						)}
+					</div>
+					<div class="flex-1 flex flex-col justify-center gap-3 p-6 md:p-10">
+						<span class="text-red text-6xl font-title leading-none -skew-x-12">&rdquo;</span>
+						<span class="text-12 font-semibold uppercase tracking-wider text-red font-main -mt-4">
+							{item.tag}
+						</span>
+						<h3 class="text-20 md:text-24 font-bold font-title text-navy leading-tight">
+							{item.title}
+						</h3>
+						<p class="text-14 md:text-15 text-bodyGrey font-body leading-relaxed">
+							{item.description}
+						</p>
+					</div>
+				</div>
+			))
+		}
+	</div>
+
+	<div class="flex items-center justify-between mt-6 px-2">
+		<button
+			type="button"
+			x-on:click={`activeIndex = (activeIndex - 1 + ${total}) % ${total}`}
+			aria-label="Previous case study"
+			class="w-11 h-11 rounded-full border-2 border-navy/20 flex items-center justify-center text-navy hover:border-red hover:text-red hover:-translate-x-0.5 transition-all duration-300"
+		>
+			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+				<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+			</svg>
+		</button>
+
+		<div class="flex items-center gap-2.5">
+			{
+				caseStudies.map((_, index) => (
+					<button
+						type="button"
+						x-on:click={`activeIndex = ${index}`}
+						aria-label={`Go to case study ${index + 1}`}
+						x-bind:class={`activeIndex === ${index} ? 'w-6 bg-red' : 'w-2.5 bg-navy/20'`}
+						class="h-2.5 rounded-full transition-all duration-300"
+					/>
+				))
+			}
+		</div>
+
+		<button
+			type="button"
+			x-on:click={`activeIndex = (activeIndex + 1) % ${total}`}
+			aria-label="Next case study"
+			class="w-11 h-11 rounded-full border-2 border-navy/20 flex items-center justify-center text-navy hover:border-red hover:text-red hover:translate-x-0.5 transition-all duration-300"
+		>
+			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+				<path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+			</svg>
+		</button>
+	</div>
+</div>

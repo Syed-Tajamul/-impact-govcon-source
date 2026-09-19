@@ -1,0 +1,42 @@
+---
+/**
+ * Impact GovCon Solutions LLC
+ * @link https://impactgovconsolutions.com
+ */
+
+import Layout from "../layouts/Layout.astro";
+import Section from "../components/Section.astro";
+import SectionTitle from "../components/SectionTitle.astro";
+---
+
+<Layout title="Terms & Conditions | Impact GovCon Solutions LLC">
+	<Section backgroundColor="white" paddingY="py-16 lg:py-20">
+		<div class="flex flex-col gap-8 w-full max-w-3xl mx-auto">
+			<SectionTitle text="Terms & " focusText="Conditions" align="left" />
+			<div class="flex flex-col gap-6 text-15 text-bodyGrey font-body leading-relaxed">
+				<p>
+					These Terms &amp; Conditions govern your use of the Impact GovCon Solutions LLC website and services. By accessing this site, you agree to these terms.
+				</p>
+				<div>
+					<h3 class="text-18 font-bold font-title text-navy mb-2">Use of Services</h3>
+					<p>
+						Our advisory, capture management, proposal development, and technical execution services are provided on an engagement basis and are subject to a separate services agreement.
+					</p>
+				</div>
+				<div>
+					<h3 class="text-18 font-bold font-title text-navy mb-2">Intellectual Property</h3>
+					<p>
+						All content on this site, including text, graphics, and logos, is the property of Impact GovCon Solutions LLC unless otherwise noted.
+					</p>
+				</div>
+				<div>
+					<h3 class="text-18 font-bold font-title text-navy mb-2">Contact</h3>
+					<p>
+						Questions regarding these terms may be directed to
+						<a href="mailto:info@impactgovconsolutions.com" class="text-red underline">info@impactgovconsolutions.com</a>.
+					</p>
+				</div>
+			</div>
+		</div>
+	</Section>
+</Layout>

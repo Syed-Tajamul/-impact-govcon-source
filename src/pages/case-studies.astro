@@ -1,0 +1,102 @@
+---
+/**
+ * Impact GovCon Solutions LLC
+ * @link https://impactgovconsolutions.com
+ */
+
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import Section from "../components/Section.astro";
+import SectionTitle from "../components/SectionTitle.astro";
+import CaseStudyCard from "../components/CaseStudyCard.astro";
+import CtaBanner from "../components/CtaBanner.astro";
+import { caseStudies } from "../data/caseStudies";
+---
+
+<Layout title="Case Studies | Impact GovCon Solutions LLC">
+	<Hero
+		eyebrow="Representative Solutions"
+		title="Illustrative Scenarios in GovCon Success"
+		description="Explore anonymized examples of how Impact GovCon Solutions integrates federal capture strategy, compliance, and technical execution to address complex challenges for our clients."
+		primaryButtonText="Discuss Your Requirements"
+		primaryButtonHref="/contact"
+		secondaryButtonText="Explore Our Services"
+		secondaryButtonHref="/services"
+		compact={true}
+	/>
+
+	<Section backgroundColor="white">
+		<div class="flex flex-col md:flex-row gap-10 w-full">
+			<div class="flex-1 flex flex-col gap-4 animate-on-scroll">
+				<SectionTitle
+					eyebrow="Our Approach"
+					text="Integrated Methodology "
+					focusText="for Federal Success"
+				/>
+			</div>
+			<div class="flex-1 flex flex-col gap-6 animate-on-scroll-right">
+				<p
+					class="text-15 md:text-16 text-bodyGrey font-body leading-relaxed"
+				>
+					Our unique methodology combines deep understanding of
+					federal procurement with practical IT engineering. We
+					partner with you to dissect solicitations, build compliant
+					proposals, and ensure your technical capabilities align with
+					agency requirements.
+				</p>
+				<p
+					class="text-15 md:text-16 text-bodyGrey font-body leading-relaxed"
+				>
+					This integrated strategy minimizes risk and maximizes your
+					competitive edge, ensuring a cohesive approach from
+					opportunity identification through contract execution.
+				</p>
+			</div>
+		</div>
+	</Section>
+
+	<Section backgroundColor="cardGrey">
+		<div class="flex flex-col gap-14 w-full">
+			<SectionTitle
+				eyebrow="Practical Applications"
+				text="Representative "
+				focusText="Case Scenarios"
+				align="center"
+			/>
+			<div class="flex flex-col gap-16 w-full mt-4">
+				{
+					caseStudies.map((item, i) => (
+						<CaseStudyCard
+							tag={item.tag}
+							title={item.title}
+							description={item.description}
+							img={item.img}
+							reverse={i % 2 === 1}
+						/>
+					))
+				}
+			</div>
+		</div>
+	</Section>
+
+	<Section backgroundColor="white">
+		<div
+			class="flex flex-col items-center text-center gap-4 max-w-2xl mx-auto animate-on-scroll"
+		>
+			<p class="text-12 text-bodyGrey font-body italic">
+				Important Disclosure: The scenarios above are illustrative and
+				anonymized representations of the type of work Impact GovCon
+				Solutions performs. They do not represent specific, identifiable
+				clients.
+			</p>
+		</div>
+	</Section>
+
+	<CtaBanner
+		id="case-cta-network"
+		heading="Ready to write your own"
+		highlight="success story?"
+		buttonText="Let's Schedule a Strategy Meeting"
+		buttonHref="/contact"
+	/>
+</Layout>

@@ -1,0 +1,72 @@
+---
+/**
+ * Impact GovCon Solutions LLC
+ * @link https://impactgovconsolutions.com
+ */
+
+import Section from "./Section.astro";
+import SectionTitle from "./SectionTitle.astro";
+import { platformCategories } from "../data/platforms";
+
+const categoryKeys = Object.keys(platformCategories);
+---
+
+<Section backgroundColor="white">
+	<div
+		class="flex flex-col gap-8 md:gap-10 items-center w-full animate-on-scroll"
+		x-data={`{ currentCategory: '${categoryKeys[0]}' }`}
+	>
+		<SectionTitle
+			eyebrow="Built to Federal Standards"
+			text="Platforms We "
+			focusText="Work With"
+			align="center"
+		/>
+		<p class="text-15 md:text-16 text-bodyGrey font-body text-center max-w-2xl -mt-2">
+			Our team works fluently across the systems, compliance frameworks, and delivery tools that federal contractors rely on every day &mdash; from capture through execution.
+		</p>
+
+		<div class="flex gap-2 md:gap-4 justify-center flex-wrap">
+			{
+				categoryKeys.map((key) => (
+					<button
+						type="button"
+						x-on:click={`currentCategory = '${key}'`}
+						x-bind:class={`currentCategory === '${key}' ? 'bg-navy text-white' : 'bg-cardGrey text-navy'`}
+						class="px-4 md:px-5 py-2 rounded-full text-13 md:text-14 font-semibold font-main transition-colors duration-300"
+					>
+						{platformCategories[key].label}
+					</button>
+				))
+			}
+		</div>
+
+		<div class="w-full max-w-[1100px] overflow-hidden relative">
+			<div class="pointer-events-none absolute left-0 top-0 h-full w-16 md:w-24 z-10 bg-gradient-to-r from-white to-transparent" />
+			<div class="pointer-events-none absolute right-0 top-0 h-full w-16 md:w-24 z-10 bg-gradient-to-l from-white to-transparent" />
+
+			{
+				categoryKeys.map((key) => (
+					<div x-show={`currentCategory === '${key}'`} x-cloak class="flex flex-col gap-4">
+						<div class="flex gap-4 w-max animate-scrollRightLeft hover:[animation-play-state:paused]">
+							{[...platformCategories[key].items, ...platformCategories[key].items].map((item) => (
+								<div class="flex items-center gap-2 px-5 py-3 rounded-lg bg-cardGrey border border-borderGrey text-14 font-semibold text-navy font-main whitespace-nowrap">
+									<span class="w-2 h-2 rounded-full bg-red" />
+									{item}
+								</div>
+							))}
+						</div>
+						<div class="flex gap-4 w-max animate-scrollLeftRight hover:[animation-play-state:paused]">
+							{[...platformCategories[key].items.slice().reverse(), ...platformCategories[key].items.slice().reverse()].map((item) => (
+								<div class="flex items-center gap-2 px-5 py-3 rounded-lg bg-white border border-borderGrey text-14 font-semibold text-navy font-main whitespace-nowrap">
+									<span class="w-2 h-2 rounded-full bg-navy" />
+									{item}
+								</div>
+							))}
+						</div>
+					</div>
+				))
+			}
+		</div>
+	</div>
+</Section>
