@@ -10,7 +10,35 @@ import Section from "../components/Section.astro";
 import SectionTitle from "../components/SectionTitle.astro";
 import ServiceCard from "../components/ServiceCard.astro";
 import CtaBanner from "../components/CtaBanner.astro";
+import Button from "../components/Button.astro";
 import { services } from "../data/services";
+
+const approachSteps = [
+	{
+		number: "01",
+		title: "Understand Your Goals",
+		description:
+			"We learn about your capabilities, target markets, challenges, and growth objectives.",
+	},
+	{
+		number: "02",
+		title: "Identify Opportunities",
+		description:
+			"We help uncover relevant federal, state, local, and education contracting opportunities aligned with your strengths.",
+	},
+	{
+		number: "03",
+		title: "Build a Winning Strategy",
+		description:
+			"We support capture planning, proposal development, teaming, business development, and technical solution positioning.",
+	},
+	{
+		number: "04",
+		title: "Strengthen Your Position",
+		description:
+			"We help you present your capabilities clearly, connect with the right partners, and pursue opportunities with greater confidence.",
+	},
+];
 ---
 
 <Layout title="Our Services | Impact GovCon Solutions LLC">
@@ -25,7 +53,7 @@ import { services } from "../data/services";
 		compact={true}
 	/>
 
-	<Section backgroundColor="white" id="approach">
+	<Section backgroundColor="white" id="services">
 		<div class="flex flex-col gap-10 w-full">
 			<SectionTitle
 				eyebrow="Our Services"
@@ -54,36 +82,57 @@ import { services } from "../data/services";
 		</div>
 	</Section>
 
-	<Section backgroundColor="cardGrey">
-		<div class="flex flex-col md:flex-row gap-10 w-full">
-			<div class="flex-1 flex flex-col gap-4 animate-on-scroll">
+	<Section backgroundColor="cardGrey" id="approach">
+		<div class="flex flex-col gap-10 md:gap-12 w-full">
+			<div class="flex flex-col gap-4 text-center max-w-3xl mx-auto">
 				<SectionTitle
-					eyebrow="Strategic Focus"
-					text="Aligning Capabilities "
-					focusText="with Opportunity"
+					eyebrow="Our Methodology"
+					text="Explore Our "
+					focusText="Approach"
+					align="center"
 				/>
+				<p
+					class="text-16 md:text-17 text-bodyGrey font-body leading-relaxed -mt-2 animate-on-scroll"
+				>
+					At Impact GovCon Solutions LLC, we take a practical, strategic, and partnership-focused approach to helping organizations grow in the government contracting marketplace.
+				</p>
 			</div>
-			<div class="flex-1 flex flex-col gap-6 animate-on-scroll-right">
-				<p
-					class="text-15 md:text-16 text-bodyGrey font-body leading-relaxed"
-				>
-					Federal procurement is highly specialized. Our approach
-					involves deep analysis of agency buying trends, legislative
-					mandates, and emerging technology requirements to position
-					your firm for success. We help you identify and pursue
-					opportunities where your core strengths provide maximum
-					competitive advantage.
-				</p>
-				<p
-					class="text-15 md:text-16 text-bodyGrey font-body leading-relaxed"
-				>
-					Beyond identifying opportunities, we assist with tailoring
-					your capture strategy and technical submittals to specific
-					agency needs. This includes detailed market research,
-					competitor analysis, and crafting compelling narratives that
-					resonate with federal evaluators. Our goal is to ensure your
-					offerings are perfectly matched to the market demand.
-				</p>
+
+			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full animate-on-scroll">
+				{
+					approachSteps.map((step) => (
+						<div class="bg-white rounded-2xl p-6 md:p-7 shadow-card hover:shadow-cardHover border border-borderGrey/60 flex flex-col justify-between gap-4 transition-all duration-300 hover:-translate-y-1">
+							<div class="flex flex-col gap-3">
+								<span class="w-10 h-10 rounded-xl bg-navy/5 text-red font-title font-bold text-16 flex items-center justify-center border border-red/20">
+									{step.number}
+								</span>
+								<h3 class="text-18 md:text-20 font-bold font-title text-navy">
+									{step.title}
+								</h3>
+								<p class="text-14 md:text-15 text-bodyGrey font-body leading-relaxed">
+									{step.description}
+								</p>
+							</div>
+						</div>
+					))
+				}
+			</div>
+
+			<div
+				class="w-full bg-white rounded-2xl p-6 md:p-8 shadow-card border border-borderGrey/70 flex flex-col lg:flex-row items-center justify-between gap-6 animate-on-scroll"
+			>
+				<div class="flex items-center gap-4">
+					<div class="w-1.5 h-12 bg-red rounded-full hidden sm:block flex-shrink-0" />
+					<p class="text-15 md:text-16 text-navy font-semibold font-body leading-relaxed italic">
+						"Our approach is focused on practical guidance, meaningful partnerships, and sustainable contracting growth."
+					</p>
+				</div>
+				<Button
+					text="Let's Explore Your Next Opportunity"
+					href="https://calendly.com/zahidmuneedjue/30-minute-meeting"
+					variant="filled"
+					pulseEffect={true}
+				/>
 			</div>
 		</div>
 	</Section>
