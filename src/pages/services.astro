@@ -28,26 +28,25 @@ import { services } from "../data/services";
 	<Section backgroundColor="white" id="approach">
 		<div class="flex flex-col gap-10 w-full">
 			<SectionTitle
-				eyebrow="Core Advisory"
+				eyebrow="Our Services"
 				text="Government Contracting "
-				focusText="Services"
+				focusText="Solutions"
 				align="left"
 			/>
 			<p
 				class="text-16 text-bodyGrey font-body max-w-2xl -mt-4 animate-on-scroll"
 			>
-				Navigate the federal marketplace with expert guidance across the
-				entire capture lifecycle, from opportunity identification to
-				contract financing readiness.
+				Strategic support for contractors pursuing opportunities, building partnerships, strengthening proposals, and growing in the government marketplace.
 			</p>
 			<div
-				class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full animate-on-scroll"
+				class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full animate-on-scroll"
 			>
 				{
 					services.map((service) => (
 						<ServiceCard
 							title={service.title}
 							description={service.description}
+							details={service.details}
 							icon={service.icon}
 						/>
 					))

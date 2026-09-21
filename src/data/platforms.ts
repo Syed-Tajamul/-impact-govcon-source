@@ -17,19 +17,6 @@ export const platformCategories: Record<string, PlatformCategory> = {
 			"PIEE",
 		],
 	},
-	cloud: {
-		label: "Cloud & Security",
-		items: [
-			"AWS GovCloud",
-			"Azure Government",
-			"Microsoft 365 GCC",
-			"ServiceNow",
-			"NIST 800-171",
-			"CMMC 2.0",
-			"FedRAMP",
-			"Okta",
-		],
-	},
 	delivery: {
 		label: "Delivery Tools",
 		items: [

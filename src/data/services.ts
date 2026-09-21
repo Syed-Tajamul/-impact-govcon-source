@@ -1,38 +1,87 @@
 export interface Service {
 	title: string;
 	description: string;
-	icon: "target" | "briefcase" | "check" | "checkShield" | "dollar";
+	details?: string;
+	icon:
+		| "target"
+		| "briefcase"
+		| "check"
+		| "checkShield"
+		| "dollar"
+		| "document"
+		| "compass"
+		| "users"
+		| "truck"
+		| "globe"
+		| string;
 }
 
 export const services: Service[] = [
 	{
-		title: "Opportunity Research & BD",
+		title: "Opportunity Research & Business Development",
 		description:
-			"Identify and qualify federal opportunities, leveraging market intelligence to inform business development strategies.",
+			"We identify and qualify relevant federal, state, local, and education contracting opportunities while using market intelligence to guide focused business development strategies.",
+		details:
+			"Our support may include opportunity research, solicitation monitoring, agency research, market analysis, lead qualification, pipeline development, and outreach planning.",
 		icon: "target",
 	},
 	{
-		title: "Capture Management & Teaming",
+		title: "Capability Statement Development",
 		description:
-			"Develop winning capture plans, build strategic partnerships, and navigate complex teaming agreements.",
+			"We help government contractors create professional, focused capability statements that clearly communicate their core competencies, differentiators, experience, and target markets.",
+		details:
+			"Capability statements can support agency outreach, prime contractor introductions, teaming discussions, subcontracting opportunities, networking, and proposal development.",
+		icon: "document",
+	},
+	{
+		title: "Capture Management",
+		description:
+			"We help organizations evaluate opportunities, understand customer requirements, identify competitors, develop win strategies, and position their capabilities before a solicitation is released.",
+		icon: "compass",
+	},
+	{
+		title: "Teaming & Subcontracting Support",
+		description:
+			"We facilitate strategic teaming conversations between companies with complementary capabilities, helping businesses explore subcontracting, joint pursuit, and partnership opportunities.",
+		icon: "users",
+	},
+	{
+		title: "Vendor Sourcing",
+		description:
+			"We help identify qualified vendors, subcontractors, suppliers, and service providers that can support government contracting requirements and strengthen contract delivery capabilities.",
+		icon: "truck",
+	},
+	{
+		title: "Staffing & Federal Workforce Solutions",
+		description:
+			"We help government contractors identify and connect with qualified professionals to support contract requirements and business growth.",
+		details:
+			"Our staffing support may include federal contract staffing, professional and technical staffing, recruiting, candidate sourcing, staff augmentation, and workforce support.",
 		icon: "briefcase",
 	},
 	{
-		title: "Professional Proposal Development",
+		title: "Proposal Development",
 		description:
-			"We help U.S. government contractors develop clear, compliant, and competitive proposals from solicitation review through submission readiness.",
+			"From solicitation analysis to final submission, we support the development of clear, compliant, and compelling proposals aligned with agency requirements and evaluation criteria.",
 		icon: "check",
 	},
 	{
-		title: "Proposal Red-Team Review",
+		title: "Proposal Reviews",
 		description:
-			"Ensure compliance and strengthen proposal narratives with our rigorous, outcome-neutral red-team review process.",
+			"Our proposal review services help identify gaps, strengthen key sections, improve responsiveness, and ensure your submission presents a consistent and persuasive solution.",
 		icon: "checkShield",
 	},
 	{
 		title: "Contract Financing Readiness",
 		description:
-			"Prepare for contract financing, ensuring your business meets the necessary financial and compliance benchmarks.",
+			"We help businesses prepare for contract financing by reviewing financial preparedness, documentation, operational planning, and other requirements that may support financing discussions.",
 		icon: "dollar",
 	},
+	{
+		title: "Web Development for Contractors",
+		description:
+			"We provide hands-on web development services to help contractors strengthen their digital presence, communicate their capabilities, and support long-term business growth.",
+		icon: "globe",
+	},
 ];
+

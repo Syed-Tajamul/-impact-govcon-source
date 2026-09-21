@@ -9,13 +9,11 @@ import Hero from "../components/Hero.astro";
 import Section from "../components/Section.astro";
 import SectionTitle from "../components/SectionTitle.astro";
 import ServiceCard from "../components/ServiceCard.astro";
-import IndustryCard from "../components/IndustryCard.astro";
 import CaseStudyCarousel from "../components/CaseStudyCarousel.astro";
 import PlatformsMarquee from "../components/PlatformsMarquee.astro";
 import CtaBanner from "../components/CtaBanner.astro";
 import Button from "../components/Button.astro";
 import { services } from "../data/services";
-import { industries } from "../data/industries";
 ---
 
 <Layout
@@ -34,17 +32,15 @@ import { industries } from "../data/industries";
 	<Section backgroundColor="white">
 		<div class="flex flex-col gap-10 w-full">
 			<SectionTitle
-				eyebrow="Core Advisory"
+				eyebrow="Our Services"
 				text="Government Contracting "
-				focusText="Services"
+				focusText="Solutions"
 				align="center"
 			/>
 			<p
 				class="text-16 text-bodyGrey font-body text-center max-w-2xl mx-auto -mt-4 animate-on-scroll"
 			>
-				Navigate the federal marketplace with expert guidance across the
-				entire capture lifecycle, from opportunity identification to
-				contract financing readiness.
+				Strategic support for contractors pursuing opportunities, building partnerships, strengthening proposals, and growing in the government marketplace.
 			</p>
 			<div
 				class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full animate-on-scroll"
@@ -54,6 +50,7 @@ import { industries } from "../data/industries";
 						<ServiceCard
 							title={service.title}
 							description={service.description}
+							details={service.details}
 							icon={service.icon}
 						/>
 					))
@@ -71,39 +68,6 @@ import { industries } from "../data/industries";
 	</Section>
 
 	<Section backgroundColor="cardGrey">
-		<div class="flex flex-col gap-10 w-full">
-			<SectionTitle
-				eyebrow="Strategic Focus"
-				text="Markets We "
-				focusText="Support"
-				align="center"
-			/>
-			<div
-				class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 w-full animate-on-scroll"
-			>
-				{
-					industries
-						.slice(0, 6)
-						.map((industry) => (
-							<IndustryCard
-								title={industry.title}
-								description={industry.description}
-							/>
-						))
-				}
-			</div>
-			<div class="mx-auto mt-2">
-				<Button
-					text="View All Industries"
-					href="/industries"
-					variant="filled"
-					arrow={true}
-				/>
-			</div>
-		</div>
-	</Section>
-
-	<Section backgroundColor="white">
 		<div class="flex flex-col gap-12 w-full max-w-[900px]">
 			<SectionTitle
 				eyebrow="Representative Solutions"

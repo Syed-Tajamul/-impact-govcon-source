@@ -7,10 +7,22 @@
 interface Props {
 	title: string;
 	description: string;
-	icon: "target" | "briefcase" | "check" | "checkShield" | "dollar";
+	details?: string;
+	icon:
+		| "target"
+		| "briefcase"
+		| "check"
+		| "checkShield"
+		| "dollar"
+		| "document"
+		| "compass"
+		| "users"
+		| "truck"
+		| "globe"
+		| string;
 }
 
-const { title, description, icon } = Astro.props;
+const { title, description, details, icon } = Astro.props;
 
 const icons: Record<string, string> = {
 	target: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M12 12.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 17.25a5.25 5.25 0 1 0 0-10.5 5.25 5.25 0 0 0 0 10.5Z" /></svg>`,
@@ -18,6 +30,11 @@ const icons: Record<string, string> = {
 	check: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>`,
 	checkShield: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 4.556-3.04 8.53-7.5 9.75-4.46-1.22-7.5-5.194-7.5-9.75V6.108a2.25 2.25 0 0 1 1.632-2.163l5.25-1.5a2.25 2.25 0 0 1 1.236 0l5.25 1.5A2.25 2.25 0 0 1 21 6.108V12Z" /></svg>`,
 	dollar: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m3-9.75c0-1.243-1.343-2.25-3-2.25s-3 1.007-3 2.25 1.343 2.25 3 2.25 3 1.007 3 2.25-1.343 2.25-3 2.25-3-1.007-3-2.25" /></svg>`,
+	document: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" /></svg>`,
+	compass: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0 0c2.5-3 3.5-6 3.5-9s-1-6-3.5-9m0 18c-2.5-3-3.5-6-3.5-9s1-6 3.5-9m9 9H3" /></svg>`,
+	users: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" /></svg>`,
+	truck: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.25V3.375c0-.621-.504-1.125-1.125-1.125H2.25c-.621 0-1.125.504-1.125 1.125v10.5c0 .621.504 1.125 1.125 1.125h1.125M14.25 7.5v6.75H21" /></svg>`,
+	globe: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" /></svg>`,
 };
 ---
 
@@ -25,8 +42,8 @@ const icons: Record<string, string> = {
 	class="group flex flex-col gap-4 bg-white border border-borderGrey rounded-xl p-7 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-cardHover"
 >
 	<div
-		class="w-11 h-11 rounded-lg bg-red/10 text-red flex items-center justify-center group-hover:bg-red group-hover:text-white transition-colors duration-300"
-		set:html={icons[icon]}
+		class="w-11 h-11 rounded-lg bg-red/10 text-red flex items-center justify-center group-hover:bg-red group-hover:text-white transition-colors duration-300 shrink-0"
+		set:html={icons[icon] || icons.target}
 	/>
 	<h3 class="text-18 md:text-20 font-bold font-title text-navy">
 		{title}
@@ -34,4 +51,12 @@ const icons: Record<string, string> = {
 	<p class="text-14 text-bodyGrey font-body leading-relaxed">
 		{description}
 	</p>
+	{
+		details && (
+			<p class="text-13 text-bodyGrey/80 font-body leading-relaxed pt-2 border-t border-borderGrey/60">
+				<span class="font-semibold text-navy">Scope of Support:</span>{" "}
+				{details}
+			</p>
+		)
+	}
 </div>

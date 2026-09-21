@@ -40,11 +40,39 @@ import { teamMembers } from "../data/team";
 	</Section>
 
 	<Section backgroundColor="cardGrey">
-		<div class="flex flex-col gap-6 items-center text-center max-w-2xl mx-auto animate-on-scroll">
-			<SectionTitle text="Our " focusText="Mission" align="center" />
-			<p class="text-16 text-bodyGrey font-body leading-relaxed">
-				Federal procurement is highly specialized. Our approach involves deep analysis of agency buying trends, legislative mandates, and emerging technology requirements to position your firm for success. We help you identify and pursue opportunities where your core strengths provide maximum competitive advantage &mdash; aligning capabilities with opportunity through market research, competitor analysis, and compelling narratives that resonate with federal evaluators.
-			</p>
+		<div class="flex flex-col gap-10 w-full animate-on-scroll">
+			<SectionTitle eyebrow="Our Purpose" text="Our Vision & " focusText="Mission" align="center" />
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl mx-auto">
+				<div class="flex flex-col gap-4 bg-white border border-borderGrey rounded-xl p-8 shadow-card hover:shadow-cardHover transition-all duration-300">
+					<div class="flex items-center gap-3">
+						<div class="w-10 h-10 rounded-lg bg-red/10 text-red flex items-center justify-center shrink-0">
+							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="w-5 h-5">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M12 12.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" />
+								<path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z" />
+								<path stroke-linecap="round" stroke-linejoin="round" d="M12 17.25a5.25 5.25 0 1 0 0-10.5 5.25 5.25 0 0 0 0 10.5Z" />
+							</svg>
+						</div>
+						<h3 class="text-20 md:text-22 font-bold font-title text-navy">Our Mission</h3>
+					</div>
+					<p class="text-15 text-bodyGrey font-body leading-relaxed">
+						Our mission is to help capable businesses compete smarter in the government marketplace by providing reliable capture, proposal, research, marketing, and business development support.
+					</p>
+				</div>
+				<div class="flex flex-col gap-4 bg-white border border-borderGrey rounded-xl p-8 shadow-card hover:shadow-cardHover transition-all duration-300">
+					<div class="flex items-center gap-3">
+						<div class="w-10 h-10 rounded-lg bg-red/10 text-red flex items-center justify-center shrink-0">
+							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="w-5 h-5">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+								<path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+							</svg>
+						</div>
+						<h3 class="text-20 md:text-22 font-bold font-title text-navy">Our Vision</h3>
+					</div>
+					<p class="text-15 text-bodyGrey font-body leading-relaxed">
+						Our vision is to become a trusted support partner for contractors that need reliable, organized, and cost-effective assistance to grow in the government marketplace.
+					</p>
+				</div>
+			</div>
 		</div>
 	</Section>
 </Layout>
