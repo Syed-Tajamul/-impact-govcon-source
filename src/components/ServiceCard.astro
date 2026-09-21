@@ -7,7 +7,6 @@
 interface Props {
 	title: string;
 	description: string;
-	details?: string;
 	icon:
 		| "target"
 		| "briefcase"
@@ -22,7 +21,7 @@ interface Props {
 		| string;
 }
 
-const { title, description, details, icon } = Astro.props;
+const { title, description, icon } = Astro.props;
 
 const icons: Record<string, string> = {
 	target: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M12 12.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 17.25a5.25 5.25 0 1 0 0-10.5 5.25 5.25 0 0 0 0 10.5Z" /></svg>`,
@@ -51,12 +50,4 @@ const icons: Record<string, string> = {
 	<p class="text-14 text-bodyGrey font-body leading-relaxed">
 		{description}
 	</p>
-	{
-		details && (
-			<p class="text-13 text-bodyGrey/80 font-body leading-relaxed pt-2 border-t border-borderGrey/60">
-				<span class="font-semibold text-navy">Scope of Support:</span>{" "}
-				{details}
-			</p>
-		)
-	}
 </div>

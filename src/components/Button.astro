@@ -12,6 +12,8 @@ export interface Props {
 	pulseEffect?: boolean;
 	arrow?: boolean;
 	ariaLabel?: string;
+	target?: string;
+	rel?: string;
 }
 
 const {
@@ -22,7 +24,13 @@ const {
 	paddings = "px-6 lg:px-8 py-3 lg:py-3.5",
 	arrow = false,
 	ariaLabel,
+	target,
+	rel,
 } = Astro.props;
+
+const isExternal = href?.startsWith("http");
+const targetAttr = target || (isExternal ? "_blank" : undefined);
+const relAttr = rel || (isExternal ? "noopener noreferrer" : undefined);
 
 const baseClasses = `flex justify-center gap-2 items-center rounded-md text-14 md:text-16 font-main font-bold max-w-max ${paddings}`;
 
@@ -40,6 +48,8 @@ const Tag = href ? "a" : "button";
 
 <Tag
 	href={href}
+	target={Tag === "a" ? targetAttr : undefined}
+	rel={Tag === "a" ? relAttr : undefined}
 	class={`${baseClasses} ${variantClasses} ${pulseClasses} hover-effect`}
 	aria-label={ariaLabel || text}
 >

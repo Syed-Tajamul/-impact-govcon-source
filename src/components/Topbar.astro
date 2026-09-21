@@ -32,8 +32,8 @@ const navLinks = [
 	>
 		<div class="max-w-[1440px] w-full px-5 md:px-10 lg:px-14">
 			<header class="w-full flex justify-between items-center py-3 font-main flex-grow">
-				<a class="flex items-center" href="/">
-					<img class="h-9 md:h-10 cursor-pointer" src="/logo.png" alt="Impact GovCon Solutions LLC" />
+				<a class="flex items-center py-1" href="/">
+					<img class="h-11 md:h-13 lg:h-14 w-auto cursor-pointer object-contain" src="/logo.png" alt="Impact GovCon Solutions LLC" />
 				</a>
 				<div class="lg:flex items-center justify-between hidden gap-6 xl:gap-8">
 					<div class="flex items-center justify-between gap-5 xl:gap-7">
@@ -65,7 +65,7 @@ const navLinks = [
 							<path d="M2.08647 0.300781C1.22468 0.300781 0.525391 1.00007 0.525391 1.86186C0.525391 2.72366 1.22468 3.43757 2.08647 3.43757C2.94827 3.43757 3.64756 2.72366 3.64756 1.86186C3.64702 1.00007 2.94772 0.300781 2.08647 0.300781V0.300781Z" fill="currentColor"/>
 						</svg>
 					</a>
-					<a href="/contact">
+					<a href="https://calendly.com/zahidmuneedjue/30-minute-meeting" target="_blank" rel="noopener noreferrer">
 						<Button text="Let's Schedule a Strategy Meeting" variant="filled" paddings="px-5 py-2.5" />
 					</a>
 				</div>
@@ -90,7 +90,7 @@ const navLinks = [
 			:class="openMenu ? 'translate-x-0' : 'translate-x-full'"
 		>
 			<div class="flex justify-between items-center border-b border-borderGrey text-16 font-medium py-4">
-				<img class="h-8 cursor-pointer" src="/logo.png" alt="Impact GovCon Solutions LLC" />
+				<img class="h-10 md:h-11 w-auto cursor-pointer object-contain" src="/logo.png" alt="Impact GovCon Solutions LLC" />
 				<button class="text-red" @click="openMenu = !openMenu" aria-label="Close menu">
 					<svg width="26" height="26" viewBox="0 0 38 39" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path d="M28.5 10L9.5 29M9.5 10L28.5 29" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -107,7 +107,7 @@ const navLinks = [
 						</li>
 					))
 				}
-				<a href="/contact">
+				<a href="https://calendly.com/zahidmuneedjue/30-minute-meeting" target="_blank" rel="noopener noreferrer">
 					<Button text="Schedule a Strategy Meeting" variant="filled" paddings="px-6 py-3" />
 				</a>
 			</ul>

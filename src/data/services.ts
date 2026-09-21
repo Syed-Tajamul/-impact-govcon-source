@@ -1,7 +1,6 @@
 export interface Service {
 	title: string;
 	description: string;
-	details?: string;
 	icon:
 		| "target"
 		| "briefcase"
@@ -21,16 +20,12 @@ export const services: Service[] = [
 		title: "Opportunity Research & Business Development",
 		description:
 			"We identify and qualify relevant federal, state, local, and education contracting opportunities while using market intelligence to guide focused business development strategies.",
-		details:
-			"Our support may include opportunity research, solicitation monitoring, agency research, market analysis, lead qualification, pipeline development, and outreach planning.",
 		icon: "target",
 	},
 	{
 		title: "Capability Statement Development",
 		description:
 			"We help government contractors create professional, focused capability statements that clearly communicate their core competencies, differentiators, experience, and target markets.",
-		details:
-			"Capability statements can support agency outreach, prime contractor introductions, teaming discussions, subcontracting opportunities, networking, and proposal development.",
 		icon: "document",
 	},
 	{
@@ -55,8 +50,6 @@ export const services: Service[] = [
 		title: "Staffing & Federal Workforce Solutions",
 		description:
 			"We help government contractors identify and connect with qualified professionals to support contract requirements and business growth.",
-		details:
-			"Our staffing support may include federal contract staffing, professional and technical staffing, recruiting, candidate sourcing, staff augmentation, and workforce support.",
 		icon: "briefcase",
 	},
 	{
