@@ -73,12 +73,17 @@ import SectionTitle from "../components/SectionTitle.astro";
 					<button
 						type="button"
 						@click="submitContact()"
-						class="mt-2 bg-red text-white font-bold text-14 rounded-md py-3 hover:bg-redDark transition-colors duration-300"
+						:disabled="isSubmitting"
+						class="mt-2 bg-red text-white font-bold text-14 rounded-md py-3 hover:bg-redDark transition-colors duration-300 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
 					>
-						Send Message
+						<span x-show="!isSubmitting">Send Message</span>
+						<span x-show="isSubmitting" x-cloak>Sending...</span>
 					</button>
 					<template x-if="errors && Object.keys(errors).length">
 						<p class="text-13 text-red">Please fill in your name, a valid email, phone, and message.</p>
+					</template>
+					<template x-if="submitError">
+						<p class="text-13 text-red" x-text="submitError"></p>
 					</template>
 				</div>
 				<div x-show="submitted" x-cloak class="flex flex-col items-center text-center gap-3 bg-cardGrey border border-borderGrey rounded-xl p-10">

@@ -16,6 +16,8 @@ document.addEventListener("alpine:init", () => {
 		caseStudies: [] as typeof caseStudies,
 		errors: {} as { [key: string]: boolean },
 		submitted: false,
+		isSubmitting: false,
+		submitError: "",
 
 		// Contact form fields
 		name: "",
@@ -36,7 +38,7 @@ document.addEventListener("alpine:init", () => {
 				this.caseStudies.length;
 		},
 
-		submitContact() {
+		async submitContact() {
 			const requiredFields: Array<"name" | "email" | "phone" | "message"> = [
 				"name",
 				"email",
@@ -44,6 +46,7 @@ document.addEventListener("alpine:init", () => {
 				"message",
 			];
 			this.errors = {};
+			this.submitError = "";
 			for (const field of requiredFields) {
 				if (field === "email" && !isValidEmail(this.email)) {
 					this.errors[field] = true;
@@ -56,7 +59,37 @@ document.addEventListener("alpine:init", () => {
 			}
 			const filteredErrors = isInputValid(this.errors);
 			if (!filteredErrors.length) {
-				this.submitted = true;
+				this.isSubmitting = true;
+				try {
+					const response = await fetch("https://api.web3forms.com/submit", {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+							Accept: "application/json",
+						},
+						body: JSON.stringify({
+							access_key: "6cddef15-7130-40c6-aaf5-6efc21c1a317",
+							name: this.name,
+							email: this.email,
+							phone: this.phone,
+							company: this.company || "Not specified",
+							message: this.message,
+							from_name: "Impact GovCon Website Form",
+							subject: "New Inquiry from " + this.name + " (" + (this.company || "Impact GovCon Website") + ")",
+						}),
+					});
+
+					const result = await response.json();
+					if (result.success) {
+						this.submitted = true;
+					} else {
+						this.submitError = result.message || "Something went wrong. Please try again.";
+					}
+				} catch (error) {
+					this.submitError = "Failed to send message. Please check your network and try again.";
+				} finally {
+					this.isSubmitting = false;
+				}
 			}
 		},
 	}));
