@@ -72,8 +72,9 @@ const approachSteps = [
 				{
 					services.map((service) => (
 						<ServiceCard
-							title={service.title}
-							description={service.description}
+							title={service.servicePageTitle || service.title}
+							subtitle={service.servicePageSubtitle}
+							description={service.servicePageDescription || service.description}
 							icon={service.icon}
 						/>
 					))

@@ -3,7 +3,6 @@ export const AppRoutes = {
 	About: "/about",
 	Services: "/services",
 	Industries: "/industries",
-	CaseStudies: "/case-studies",
 	ContactUs: "/contact",
 	PrivacyPolicy: "/privacy-policy",
 };

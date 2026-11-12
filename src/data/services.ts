@@ -1,6 +1,9 @@
 export interface Service {
 	title: string;
 	description: string;
+	servicePageTitle?: string;
+	servicePageSubtitle?: string;
+	servicePageDescription?: string;
 	icon:
 		| "target"
 		| "briefcase"
@@ -12,10 +15,21 @@ export interface Service {
 		| "users"
 		| "truck"
 		| "globe"
+		| "badgeCheck"
 		| string;
 }
 
 export const services: Service[] = [
+	{
+		title: "Fed Ready: Government Contracting Readiness",
+		description:
+			"We get new and growing businesses registered, positioned and prepared to compete for federal opportunities, so you can start bidding with confidence.",
+		servicePageTitle: "Fed Ready Program",
+		servicePageSubtitle: "Everything you need before your first bid",
+		servicePageDescription:
+			"Many capable businesses lose out on government contracts before they ever submit a proposal. Their registrations are incomplete, their codes don't match what they sell, or their story isn't clear to the buyer. Fed Ready fixes that.",
+		icon: "badgeCheck",
+	},
 	{
 		title: "Opportunity Research & Business Development",
 		description:
@@ -41,18 +55,6 @@ export const services: Service[] = [
 		icon: "users",
 	},
 	{
-		title: "Vendor Sourcing",
-		description:
-			"We help identify qualified vendors, subcontractors, suppliers, and service providers that can support government contracting requirements and strengthen contract delivery capabilities.",
-		icon: "truck",
-	},
-	{
-		title: "Staffing & Federal Workforce Solutions",
-		description:
-			"We help government contractors identify and connect with qualified professionals to support contract requirements and business growth.",
-		icon: "briefcase",
-	},
-	{
 		title: "Proposal Development",
 		description:
 			"From solicitation analysis to final submission, we support the development of clear, compliant, and compelling proposals aligned with agency requirements and evaluation criteria.",
@@ -65,16 +67,9 @@ export const services: Service[] = [
 		icon: "checkShield",
 	},
 	{
-		title: "Contract Financing Readiness",
-		description:
-			"We help businesses prepare for contract financing by reviewing financial preparedness, documentation, operational planning, and other requirements that may support financing discussions.",
-		icon: "dollar",
-	},
-	{
 		title: "Web Development for Contractors",
 		description:
 			"We provide hands-on web development services to help contractors strengthen their digital presence, communicate their capabilities, and support long-term business growth.",
 		icon: "globe",
 	},
 ];
-

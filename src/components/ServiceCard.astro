@@ -7,6 +7,7 @@
 interface Props {
 	title: string;
 	description: string;
+	subtitle?: string;
 	icon:
 		| "target"
 		| "briefcase"
@@ -18,12 +19,14 @@ interface Props {
 		| "users"
 		| "truck"
 		| "globe"
+		| "badgeCheck"
 		| string;
 }
 
-const { title, description, icon } = Astro.props;
+const { title, description, subtitle, icon } = Astro.props;
 
 const icons: Record<string, string> = {
+	badgeCheck: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" /></svg>`,
 	target: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M12 12.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 17.25a5.25 5.25 0 1 0 0-10.5 5.25 5.25 0 0 0 0 10.5Z" /></svg>`,
 	briefcase: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25a2 2 0 0 1-2 2H5.75a2 2 0 0 1-2-2v-4.25M20.25 14.15a2.25 2.25 0 0 0-1.632-2.163L15 11.25M20.25 14.15a2.25 2.25 0 0 1-1.632 2.163L15 17.25M3.75 14.15a2.25 2.25 0 0 1 1.632-2.163L9 11.25M3.75 14.15a2.25 2.25 0 0 0 1.632 2.163L9 17.25M9 11.25V9a3 3 0 0 1 3-3v0a3 3 0 0 1 3 3v2.25M9 11.25h6M9 17.25h6" /></svg>`,
 	check: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>`,
@@ -44,9 +47,18 @@ const icons: Record<string, string> = {
 		class="w-11 h-11 rounded-lg bg-red/10 text-red flex items-center justify-center group-hover:bg-red group-hover:text-white transition-colors duration-300 shrink-0"
 		set:html={icons[icon] || icons.target}
 	/>
-	<h3 class="text-18 md:text-20 font-bold font-title text-navy">
-		{title}
-	</h3>
+	<div class="flex flex-col gap-1">
+		<h3 class="text-18 md:text-20 font-bold font-title text-navy">
+			{title}
+		</h3>
+		{
+			subtitle && (
+				<p class="text-13 md:text-14 font-semibold text-red font-title italic">
+					{subtitle}
+				</p>
+			)
+		}
+	</div>
 	<p class="text-14 text-bodyGrey font-body leading-relaxed">
 		{description}
 	</p>

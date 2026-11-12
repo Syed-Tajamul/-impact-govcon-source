@@ -11,6 +11,9 @@ import alpinejs from "@astrojs/alpinejs";
 export default defineConfig({
   site: "https://impactgovconsolutions.com",
   integrations: [tailwind(), alpinejs()],
+  redirects: {
+    "/case-studies": "/services",
+  },
   server: {
     host: true,
   },

@@ -1,5 +1,4 @@
 import Alpine from "alpinejs";
-import { caseStudies } from "../data/caseStudies";
 
 const isInputValid = (errors: { [key: string]: boolean }) => {
 	return Object.entries(errors).filter((v) => v);
@@ -12,8 +11,6 @@ const isValidEmail = (email: string) => {
 
 document.addEventListener("alpine:init", () => {
 	Alpine.data("initializeScript", () => ({
-		activeIndex: 0,
-		caseStudies: [] as typeof caseStudies,
 		errors: {} as { [key: string]: boolean },
 		submitted: false,
 		isSubmitting: false,
@@ -25,18 +22,6 @@ document.addEventListener("alpine:init", () => {
 		phone: "",
 		company: "",
 		message: "",
-
-		initializeCaseStudies() {
-			this.caseStudies = caseStudies;
-		},
-		nextCase() {
-			this.activeIndex = (this.activeIndex + 1) % this.caseStudies.length;
-		},
-		prevCase() {
-			this.activeIndex =
-				(this.activeIndex - 1 + this.caseStudies.length) %
-				this.caseStudies.length;
-		},
 
 		async submitContact() {
 			const requiredFields: Array<"name" | "email" | "phone" | "message"> = [
